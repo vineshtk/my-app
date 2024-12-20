@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import  axios  from "axios";
 import toast from "react-hot-toast";
+import Login from '@/components/Login'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -20,7 +21,7 @@ export default function LoginPage() {
        const response = await axios.post("api/users/login", user);
        console.log("login success", response.data)
        toast.success("Login sucess")
-       router.push("/profile")
+       router.push("/dashboard/admin/home")
       
     } catch (error:any) {
       console.log("login failed", error.message);
@@ -72,6 +73,12 @@ export default function LoginPage() {
         Login
       </button>
       <Link href="/signup">Signup Here</Link>
+
+      {/* <Login /> */}
     </div>
+
+
+
+
   );
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import axios  from "axios";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 export default function SignupPage() {
@@ -18,14 +18,12 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
 
   const onSignup = async () => {
-
     try {
       setLoading(true);
       const response = await axios.post("api/users/signup", user);
       console.log("signup success", response.data);
       router.push("/login");
-      
-    } catch (error) {
+    } catch (error: any) {
       console.log("Signup failed 123", error.message);
 
       toast.error(error.message);
@@ -89,6 +87,7 @@ export default function SignupPage() {
         {buttonDisabled ? "No Signup" : "Signup"}
       </button>
       <Link href="/login">Login Here</Link>
+      {/* <Signup /> */}
     </div>
   );
 }
